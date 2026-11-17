@@ -25,8 +25,8 @@
     if(!hero.id)hero.id='conteudo';hero.setAttribute('tabindex','-1');
     const skip=document.createElement('a');skip.className='skip-link';skip.href='#'+hero.id;skip.textContent='Ir para o conteúdo';document.body.prepend(skip);
     if(current==='index.html'){
-      hero.classList.add('home-hero');const figure=document.createElement('figure');figure.className='hero-map';
-      figure.innerHTML='<figcaption><strong>Malha viária DER/SP</strong><span>São Paulo</span></figcaption><img src="assets/images/malha-sp.svg" alt="Rede do cadastro DER/SP: SP, SPA, SPI e BR; linhas coloridas por tipo de rodovia." width="800" height="560"><a href="anexo-mapas.html">Explorar os mapas do estudo ↗</a>';hero.append(figure);
+      hero.classList.add('sigma-page-hero');const figure=document.createElement('figure');figure.className='hero-map';
+      figure.innerHTML='<figcaption><strong>Malha viária DER/SP</strong><span>São Paulo</span></figcaption><img src="assets/images/malha-sp.svg" alt="Rede do cadastro DER/SP: SP, SPA, SPI e BR; linhas coloridas por tipo de rodovia." width="800" height="560"><a href="anexo-mapas.html">Explorar os mapas do estudo ↗</a>';hero.after(figure);
       const overview=document.querySelector('.stats-container')?.closest('.section');if(overview){overview.classList.add('home-overview');hero.after(overview);}
     }else if(current!=='glossario.html'){
       const headings=Array.from(document.querySelectorAll('.section-header h2,.questao-header h2'));

@@ -3,7 +3,8 @@
   'use strict';
   const pages = [['index.html','Introdução'],['objetivos.html','Objetivos'],['dados.html','Dados'],['metodologia.html','Metodologia'],['resultados.html','Resultados'],['discussao.html','Discussão'],['conclusao.html','Conclusão'],['anexo-mapas.html','Mapas e malha'],['dashboard.html','Dashboard'],['glossario.html','Glossário']];
   function init() {
-    const current = location.pathname.split('/').pop() || 'index.html';
+    const pathPart = location.pathname.split('/').pop() || '';
+    const current = !pathPart || !pathPart.includes('.') ? 'index.html' : pathPart;
     const page = pages.find(([file]) => file === current) || pages[0];
     document.body.classList.add('study-ready');
     document.querySelector('[data-cabecalho-host]')?.remove();

@@ -4,7 +4,7 @@
   const pages = [['index.html','Introdução'],['objetivos.html','Objetivos'],['dados.html','Dados'],['metodologia.html','Metodologia'],['resultados.html','Resultados'],['discussao.html','Discussão'],['conclusao.html','Conclusão'],['anexo-mapas.html','Mapas e malha'],['dashboard.html','Dashboard'],['glossario.html','Glossário']];
   function init() {
     const pathPart = location.pathname.split('/').pop() || '';
-    const current = !pathPart || !pathPart.includes('.') ? 'index.html' : pathPart;
+    const current = !pathPart ? 'index.html' : (pathPart.includes('.') ? pathPart : `${pathPart}.html`);
     const page = pages.find(([file]) => file === current) || pages[0];
     document.body.classList.add('study-ready');
     document.querySelector('[data-cabecalho-host]')?.remove();
@@ -45,6 +45,11 @@
       button.removeAttribute('onclick');button.setAttribute('aria-controls','maps-'+match[1]);button.setAttribute('aria-pressed',String(button.classList.contains('active')));
       button.addEventListener('click',()=>{document.querySelectorAll('.maps-section').forEach(section=>section.classList.toggle('active',section.id==='maps-'+match[1]));document.querySelectorAll('.granularity-tab').forEach(tab=>{tab.classList.toggle('active',tab===button);tab.setAttribute('aria-pressed',String(tab===button));});});
     });
+    document.querySelectorAll('a[href]').forEach(link=>{
+      const href=link.getAttribute('href');
+      if(href&&!/^(?:https?:|mailto:|tel:|#)/i.test(href))link.setAttribute('href',href.replace(/\.html(?=([?#]|$))/,''));
+    });
+    if(/\.html$/.test(location.pathname))history.replaceState(history.state,'',location.pathname.replace(/\.html$/,'')+location.search+location.hash);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();

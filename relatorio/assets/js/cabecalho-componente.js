@@ -10,7 +10,7 @@
     document.querySelector('[data-cabecalho-host]')?.remove();
     const header = document.createElement('header');
     header.className = 'study-topbar';
-    header.innerHTML = `<a class="study-wordmark" href="index.html" aria-label="PLI — início do estudo">PLI <span>Estudos territoriais</span></a><div class="study-topbar-links"><a href="https://56.125.163.194/pli-hub/">← PLI Hub</a><a href="glossario.html">Glossário</a><button class="menu-toggle" aria-controls="study-navigation" aria-expanded="false">Menu</button></div>`;
+    header.innerHTML = `<a class="study-wordmark" href="index.html" aria-label="PLI — início do estudo">PLI <span>Estudos territoriais</span></a><div class="study-topbar-links"><a href="https://56.125.163.194/pli-hub/">← PLI Hub</a><a href="glossario.html">Glossário técnico-conceitual</a><button class="menu-toggle" aria-controls="study-navigation" aria-expanded="false">Menu</button></div>`;
     document.body.prepend(header);
     let nav = document.querySelector('.navbar');
     if (!nav) {nav=document.createElement('nav');nav.className='navbar';header.after(nav);}
